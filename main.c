@@ -9,6 +9,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/types.h>
+#include <errno.h>
+#include <time.h>
+#include <sys/time.h>
 
 #include "splitutility.c" // for splitting the input problem
 #include "wordutility.c" // for word parsing and counting operation
