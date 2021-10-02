@@ -309,7 +309,29 @@ void masterAssignMapper() {
     // =================================================================
 }
 
+
+enum { NS_PER_SECOND = 1000000000 };
+
+void sub_timespec(struct timespec t1, struct timespec t2, struct timespec *td)
+{
+    td->tv_nsec = t2.tv_nsec - t1.tv_nsec;
+    td->tv_sec  = t2.tv_sec - t1.tv_sec;
+    if (td->tv_sec > 0 && td->tv_nsec < 0)
+    {
+        td->tv_nsec += NS_PER_SECOND;
+        td->tv_sec--;
+    }
+    else if (td->tv_sec < 0 && td->tv_nsec > 0)
+    {
+        td->tv_nsec -= NS_PER_SECOND;
+        td->tv_sec++;
+    }
+}
+
+//time measuring in here
 void masterRoutine() {
+    struct timespec start, finish, delta;
+    clock_gettime(CLOCK_REALTIME, &start);
     // assign tasks to mapper
     masterAssignMapper();
     
@@ -324,8 +346,10 @@ void masterRoutine() {
     
     // should be FIRED only when ALL MapReduces tasks finished!!!
     masterWakeupUser();
-    
+    sub_timespec(start, finish, &delta);
+    clock_gettime(CLOCK_REALTIME, &finish);
     printf("master [PID: %d] process finished\n", getpid());
+    fprintf(stdout, "latency : %ld.%.9ld\n", delta.tv_sec, delta.tv_nsec);
 }
 
 void userRoutine() {
