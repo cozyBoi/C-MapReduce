@@ -350,8 +350,8 @@ void masterRoutine() {
     
     // should be FIRED only when ALL MapReduces tasks finished!!!
     masterWakeupUser();
-    sub_timespec(start, finish, &delta);
     clock_gettime(CLOCK_REALTIME, &finish);
+    sub_timespec(start, finish, &delta);
     printf("master [PID: %d] process finished\n", getpid());
     fprintf(stdout, "latency : %ld.%.9ld\n", delta.tv_sec, delta.tv_nsec);
 }
