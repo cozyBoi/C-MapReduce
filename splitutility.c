@@ -37,6 +37,13 @@ char* getSplitFilename(int count) {
     return newName;
 }
 
+//user set these values
+//int fileSize = 1000000000; //10G
+int fileSize = 10000; //10K
+int processNum = 1;
+//
+int wordPerFile = fileSize / processNum;
+
 int splitfile(char *fNameInput) {
 	FILE *fpIn;
     fpIn = fopen(fNameInput, "r");
@@ -70,11 +77,21 @@ int splitfile(char *fNameInput) {
                 //printf("@@ write to split file: %s\n", getSplitFilename(splitCount));
                 fprintf(fpOut, "%s\n", string);
                 
+                /*
                 if (wordCount % MAX_WORDS_PER_FILE == 0) {
                     // need to split, increment the split counter by 1
                     splitCount++;
                     
                     // close the file handle and re-open to next split file
+                    fclose(fpOut);
+                    free(fNameSplit);
+                    fNameSplit = getSplitFilename(splitCount);
+                    fpOut = fopen(fNameSplit, "w+");
+                }*/
+                
+                if(wordCount >= wordPerFile){
+                    splitCount++;
+                    
                     fclose(fpOut);
                     free(fNameSplit);
                     fNameSplit = getSplitFilename(splitCount);
