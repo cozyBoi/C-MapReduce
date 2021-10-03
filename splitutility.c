@@ -16,7 +16,7 @@
 
 //total 12G
 //글자가 평균 6글자라 가정 -> 한 파일당 6기가를 원함 -> 맵퍼두개, 한 파일당 글자는 / 6
-const int MAX_WORDS_PER_FILE = 6000000 / 6; // maximum words for split
+const int MAX_WORDS_PER_FILE = 6000000000 / 6; // maximum words for split
 
 char* getSplitFilename(int count) {
     char *splitName = "split_";
