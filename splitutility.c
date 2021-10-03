@@ -81,7 +81,6 @@ int splitfile(char *fNameInput) {
                 //printf("@@ write to split file: %s\n", getSplitFilename(splitCount));
                 fprintf(fpOut, "%s\n", string);
                 
-                /*
                 if (wordCount % MAX_WORDS_PER_FILE == 0) {
                     // need to split, increment the split counter by 1
                     splitCount++;
@@ -91,8 +90,9 @@ int splitfile(char *fNameInput) {
                     free(fNameSplit);
                     fNameSplit = getSplitFilename(splitCount);
                     fpOut = fopen(fNameSplit, "w+");
-                }*/
+                }
                 
+                /*
                 if(wordCount >= wordPerFile){
                     splitCount++;
                     
@@ -100,7 +100,7 @@ int splitfile(char *fNameInput) {
                     free(fNameSplit);
                     fNameSplit = getSplitFilename(splitCount);
                     fpOut = fopen(fNameSplit, "w+");
-                }
+                }*/
                 
                 charCount = 0;
                 free(string);
