@@ -1,3 +1,4 @@
+
 //
 //  splitutility.c
 //  C-MapReduce
@@ -42,9 +43,10 @@ char* getSplitFilename(int count) {
 int fileSize = 10000; //10K
 int processNum = 1;
 //
-int wordPerFile = fileSize / processNum;
+int wordPerFile;
 
 int splitfile(char *fNameInput) {
+    
 	FILE *fpIn;
     fpIn = fopen(fNameInput, "r");
     
@@ -59,6 +61,8 @@ int splitfile(char *fNameInput) {
     char *string = malloc(sizeof(char));
     int charCount = 0;
     int wordCount = 0;
+    
+    wordPerFile = fileSize / processNum;
     
     while ((temp = fgetc(fpIn)) != EOF) {
         //printf("[%c]\n", temp);
