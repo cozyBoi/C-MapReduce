@@ -478,7 +478,7 @@ void initChildsCounter() {
     mapperCount = mapTasksCount; // mapper count is simply set to mapTasksCount
     //reducerCount = mapperCount / 4; // reducer count is simply set to 4 times smaller than mapper
     //reducerCount = mapperCount;
-    reducerCount = mapperCount / 2;
+    reducerCount = mapperCount / 4;
     MAX_CHILDS = 1 + mapperCount + reducerCount; //at least 1 is master, the rest can be mapper or reducer
     
     printf("Map Worker(s): %d\n", mapperCount);
