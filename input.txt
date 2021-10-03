@@ -1,7 +1,9 @@
-Hello, this is a WordCount application which works quite straight-forward! 
+I love Sweet Chili
 
-It's been designed to support english only, so all the text must be in ASCII.
+Kim ak zm qn wkenkn
 
-The file MUST be encoded using "ASCII" scheme.
+akndsl Lee asdknl qweq
 
-Have FUN!!!
+zxckz asdq ewe sadsa
+
+chicken Jo ah
