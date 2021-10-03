@@ -125,7 +125,7 @@ void analyzeWordsCount(char *fName) {
                 // do the comparision here
                 if (strlen(prevString) <= 0) { // the first record, prevString is empty
                     string[strlen(string)] = '\0'; //add the null-termination character '\0'
-                    printf("the first record [%s]-->\n",string);
+                    //printf("the first record [%s]-->\n",string);
                     
                     /* copy the current string to the previous string
                      * destroy current sting
@@ -140,7 +140,7 @@ void analyzeWordsCount(char *fName) {
                      */
                     if (compareString(prevString, string) != 0) { // No match is found
                         prevString[strlen(prevString)] = '\0'; //add the null-termination character '\0'
-                        printf("no more match found for [%s] --> %d\n", prevString, matchCount);
+                        //printf("no more match found for [%s] --> %d\n", prevString, matchCount);
                         fprintf(fpOut, "%s,%d\n", prevString, matchCount);
                         
                         matchCount = 1;
@@ -151,7 +151,7 @@ void analyzeWordsCount(char *fName) {
                         
                     } else {
                         matchCount++;
-                        printf("a previous match is found for [%s]-->\n",string);
+                        //printf("a previous match is found for [%s]-->\n",string);
                     }
                 }
                 
@@ -171,10 +171,10 @@ void analyzeWordsCount(char *fName) {
     /* Avoid the last record being omitted, just use the matchCount to determine a matching or not
      */
     if (matchCount <= 1) { // No match is found
-        printf("no more match found for [%s] --> %d\n", prevString, matchCount);
+        //printf("no more match found for [%s] --> %d\n", prevString, matchCount);
         fprintf(fpOut, "%s,%d\n", prevString, matchCount);
     } else {
-        printf("a previous match is found for [%s]-->\n",string);
+        //printf("a previous match is found for [%s]-->\n",string);
         fprintf(fpOut, "%s,%d\n", string, matchCount);
     }
     

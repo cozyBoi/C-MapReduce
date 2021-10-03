@@ -78,11 +78,11 @@ int splitfile(char *fNameInput) {
         ){
             if (charCount > 0) {
                 string[strlen(string)] = '\0'; //add the null-termination character '\0'
-                printf("[%s]-->\n",string);
+                //printf("[%s]-->\n",string);
                 wordCount ++;
                 
                 //printf("@@ write to split file: %s\n", getSplitFilename(splitCount));
-                fprintf(fpOut, "%s\n", string);
+                //fprintf(fpOut, "%s\n", string);
                 
                 if (wordCount % MAX_WORDS_PER_FILE == 0) {
                     // need to split, increment the split counter by 1
