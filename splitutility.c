@@ -21,23 +21,23 @@ const int MAX_WORDS_PER_FILE = 6000000000 / 6; // maximum words for split
 
 char* getSplitFilename(int count) {
     char *splitName = "split_";
-    //printf("%lu\n", strlen(splitName));
+    printf("%lu\n", strlen(splitName));
     
     char splitCount = '0' + count;
-    //printf("%lu\n", sizeof(splitCount));
+    printf("%lu\n", sizeof(splitCount));
     
     char *fExt = ".txt";
-    //printf("%lu\n", strlen(fExt));
+    printf("%lu\n", strlen(fExt));
     
     char *newName = (char *) malloc(strlen(splitName) + 2 + strlen(fExt)); //one for extra char, one for trailing zero
-    //printf("%lu\n", strlen(newName));
+    printf("%lu\n", strlen(newName));
     
     strcpy(newName, splitName);
     newName[strlen(splitName)] = splitCount;
     newName[strlen(splitName)+1] = '\0';
     strcat(newName, fExt);
-    //printf("%lu\n", strlen(newName));
-    //printf("--> %s\n", newName);
+    printf("%lu\n", strlen(newName));
+    printf("--> %s\n", newName);
     
     return newName;
 }
@@ -69,7 +69,7 @@ int splitfile(char *fNameInput) {
     wordPerFile = fileSize / processNum;
     
     while ((temp = fgetc(fpIn)) != EOF) {
-        //printf("[%c]\n", temp);
+        printf("[%c]\n", temp);
         
         if (temp == '\n' || temp == ' ' || temp == '?' || temp == ',' || temp == '.' || temp == '\"' ||
             temp == '!' || temp == '@' || temp == '~' || temp == '#' || temp == '$' || temp == '%' ||
@@ -79,10 +79,10 @@ int splitfile(char *fNameInput) {
         ){
             if (charCount > 0) {
                 string[strlen(string)] = '\0'; //add the null-termination character '\0'
-                //printf("[%s]-->\n",string);
+                printf("[%s]-->\n",string);
                 wordCount ++;
                 
-                //printf("@@ write to split file: %s\n", getSplitFilename(splitCount));
+                printf("@@ write to split file: %s\n", getSplitFilename(splitCount));
                 fprintf(fpOut, "%s\n", string);
                 
                 if (wordCount % MAX_WORDS_PER_FILE == 0) {
@@ -125,7 +125,7 @@ int splitfile(char *fNameInput) {
     free(fNameSplit);
     fclose(fpIn);
     fclose(fpOut);
-
+    splitCount--; //sibal
     return(splitCount);
 }
 
