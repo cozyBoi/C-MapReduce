@@ -62,7 +62,8 @@ int splitfile(char *fNameInput) {
     fpOut = fopen(fNameSplit, "w+");
     
     char temp;
-    char *string = malloc(sizeof(char));
+    //char *string = malloc(sizeof(char));
+    char *string = malloc(sizeof(char) * 20);
     int charCount = 0;
     int wordCount = 0;
     
@@ -108,12 +109,14 @@ int splitfile(char *fNameInput) {
                 
                 charCount = 0;
                 free(string);
-                string = calloc(0, sizeof(char));
+                //string = calloc(0, sizeof(char));
+                string = calloc(0, sizeof(char)*20);
             }
         } else {
             if (charCount == 0) {
                 free(string);
-                string = calloc(0, sizeof(char));
+                //string = calloc(0, sizeof(char));
+                string = calloc(0, sizeof(char)*20);
             }
             string[charCount] = temp;
             string[strlen(string)] = '\0'; //add the null-termination character '\0'
