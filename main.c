@@ -213,6 +213,7 @@ void masterWaitForMapper() {
      *   this could effectively avoid the input data to be chunked and transmitted out of order
      *   which makes it impossible to ressemble the original data
      */
+    //
     while((temp = read(mapperToMasterPipe[0], buf, 1)) > 0) {
         printf("master [PID: %d] process %lu char read from mapper pipe: [%s]\n", getpid(), strlen(buf), buf);
         completedTaskCount++;
