@@ -128,7 +128,7 @@ int splitfile(char *fNameInput) {
     free(fNameSplit);
     fclose(fpIn);
     fclose(fpOut);
-    splitCount--; //sibal
+    //splitCount--; //sibal
     return(splitCount);
 }
 
